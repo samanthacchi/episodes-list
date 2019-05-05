@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
+import Episodes from './episodes.json';
+import Header from './header'
 import './App.css';
+import Episode from './Episode.js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const App = () => (
+  <div>
+    <Header />
+    {/*tv show selector - dropdown menu and if statement*/}
+
+    {Episodes.map(tvEpisode => {
+      return <Episode 
+      name= {tvEpisode.name} 
+      summary={tvEpisode.summary}
+      season={tvEpisode.season}
+      number={tvEpisode.number}
+      //if tvepisode contains image then execute
+      image={tvEpisode.image ? tvEpisode.image.medium : null}
+
+      airdate={tvEpisode.airdate}
+      />;
+    })}
     </div>
-  );
-}
+)
+
 
 export default App;
